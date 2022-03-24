@@ -6,15 +6,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-import project_끝말잇기.Member;
-
-
-
 public class Controller {
 	
 	static ArrayList<Member> memberlist = new ArrayList<Member>();
 	static String[] wordList = new String[100];
  	Scanner scanner = new Scanner(System.in);
+ 	
 	// id_valid test
 	public static int id_valid (String id) {
 		// id 정규식  "/^[a-zA-Z0-9]{1,12}$/"  -> 12글자 이하 숫자, 영문

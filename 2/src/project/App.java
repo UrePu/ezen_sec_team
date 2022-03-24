@@ -2,10 +2,6 @@ package project;
 
 import java.util.Scanner;
 
-import project_끝말잇기.Controller;
-
-
-
 public class App {
 	
 	public static void main(String[] args) {
@@ -34,7 +30,7 @@ public class App {
 					} else if (Controller.id_valid(id) == 1 && Controller.pw_valid(pw) == 0) {
 						System.err.println("\n비밀번호는 8글자 이상 숫자, 영문, 특수문자를 반드시 포함해 주세요.");
 					} else if (Controller.id_valid(id) == 1 && Controller.pw_valid(pw) == 1) {
-						boolean result = Controller.duplication_text(id);
+						boolean result = Controller.duplication_test(id);
 						if (result) {
 							Controller.sign_up(id, pw, name, contact);
 							System.out.println("\n회원가입 성공");
