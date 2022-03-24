@@ -2,7 +2,7 @@ package project;
 
 import java.util.Scanner;
 
-import project_≥°∏ª¿’±‚.Controller;
+
 
 public class App {
 	
