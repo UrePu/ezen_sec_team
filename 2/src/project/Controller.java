@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+import project_≥°∏ª¿’±‚.Member;
+
 
 
 public class Controller {
@@ -40,6 +42,16 @@ public class Controller {
 		}
 		
 	}
+	
+	// duplication test 
+		public static boolean duplication_test (String id) {
+			for(Member temp : memberlist) {
+				if (temp.getId().equals(id)) {
+					return false;
+				} 
+			}
+			return true;
+		}
 	
 	
 	// sign_up method
