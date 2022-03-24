@@ -1,10 +1,12 @@
 package project;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import project_끝말잇기.Member;
 
 public class Controller {
 	
@@ -122,7 +124,36 @@ public class Controller {
 			}
 		}
 	}
-	
-	
-
+	public void save() { // 정준영 저장 s
+        FileOutputStream fileOutputStream;
+        try {
+           fileOutputStream = new FileOutputStream("c:/temp/java/test/test.txt",true);
+           for(Member temp : memberlist) {
+              String output = (temp.getId()+","+temp.getPw()+","+temp.getName()+","+temp.getContact()+","+temp.getCount());
+           
+           fileOutputStream.write(output.getBytes()); // 바이트화 해서 기록
+              }
+           } catch (Exception e) {}
+        
+     } // 저장 e
+     
+     public void load() { // 정준영 불러오기 s
+        try {
+           FileInputStream fileInputStream = new FileInputStream("c:/temp/java/test/test.txt");
+           byte[] bytes = new byte[1024]; // 바이트 배열 선언
+           fileInputStream.read(bytes);
+           String file = new String(bytes); // 파일내용 선언
+           String[] list = file.split("\n"); // \n 기준으로 자르기
+           for(int i = 0; i<list.length; i++) { // list 끝까지 한번씩 차례차례
+               String[] ma = file.split(",",5); // , 를 기준으로 5개까지 잘라서 저장
+                        Member member = new Member(ma[0], ma[1], ma[2], ma[3], Integer.parseInt(ma[4]));
+                        // 아이디, 비밀번호, 이름, 전화번호, 점수
+                        // 문자열 --> 정수형 변환 
+               memberlist.add(member);   // 리스트 저장
+           } // for e
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+        
+     } // 불러오기 e
 }
