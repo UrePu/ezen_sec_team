@@ -5,6 +5,8 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import project_끝말잇기.Member;
+
 public class Controller {
 	
 	static ArrayList<Member> memberlist = new ArrayList<Member>();
@@ -43,6 +45,20 @@ public class Controller {
 	public static void sign_up (String id, String pw, String name, String contact) {
 		Member member = new Member(id, pw, name, contact);
 		memberlist.add(member);
+	}
+	
+	// login method
+	public static int login(String id, String pw) {
+		for (Member temp : memberlist) {
+			if (temp.getId().equals(id) && temp.getPw().equals(pw)) {
+				return 1;
+			} else if (temp.getId().equals(id) && !temp.getPw().equals(pw)) {
+				return 2;
+			} else if (!temp.getId().equals(id) && temp.getPw().equals(pw)) {
+				return 3;
+			} 
+		}
+		return 0;
 	}
 	
 	//김선제 - gameStart 메소드 작성//
