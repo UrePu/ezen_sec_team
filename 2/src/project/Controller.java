@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-import project_끝말잇기.Member;
+
 
 public class Controller {
 	
@@ -154,6 +154,7 @@ public class Controller {
         } catch (Exception e) {
            e.printStackTrace();
         }
+        
         
      } // 불러오기 e
 }
