@@ -46,7 +46,7 @@ public class Controller {
 	}
 	
 	//김선제 - gameStart 메소드 작성//
-	public static boolean gameStart(String id, String word) {
+	public static boolean gameStart(String id, String word) { // id, 및 입력한 word 받아오기
 		
 		if(wordList[0] == null) {
 			wordList[0] = word;
@@ -78,18 +78,31 @@ public class Controller {
 	public static void save(String id, int index) {
 		for(Member temp : memberlist) {
 			if(temp != null && temp.getId().equals(id)) {
-				if(index > temp.getScore())
-					temp.setScore(index);
+				if(index > temp.getCount())
+					temp.setCount(index);
 			}
 		}
 		
 	}
+	// wordList 초기화
+	public static void initialization(String id) {
+		int index = 0;
+		for(String temp : wordList) {
+			if(temp != null) {
+				Controller.wordList[index] = null;
+				index++;
+			}
+		}
+		System.out.println("내 점수: " + (index -1));
+		Controller.save(id, index -1);
+	}
+	
 	//김선제- 점수 보기
-
+	
 	public static void seeScore(String id) {
 		for(Member temp : memberlist) {
 			if(temp != null && temp.getId().equals(id)) {
-			System.out.println( temp.getScore());
+			System.out.println( temp.getCount());
 
 			}
 		}
