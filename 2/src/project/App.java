@@ -8,7 +8,7 @@ public class App {
 	public static boolean inputCheck = false;
 	
 	static Scanner scanner = new Scanner(System.in);
-	public static void main(String[] args) {
+	public static void main (String[] args) {
 		
 		
 		try {
@@ -103,7 +103,7 @@ public class App {
 		
 	}
 	
-	private static void game(String id) {
+	public static void game (String id) throws InterruptedException {
 		
 		try {
 			while(true) {
@@ -117,27 +117,29 @@ public class App {
 					System.out.println("게임 시작");
 					String firstword = Controller.randomfirstword();
 					System.out.print("첫번째 글자 : " + firstword + "\n");
-					GameTimer gameTimer = new GameTimer();
+					
 					while(true) {
+						GameTimer gameTimer = new GameTimer();
 						//scanner = new Scanner(System.in);2
 						//gameTimer.setStop(false);
-						Scanner scanner = new Scanner(System.in);
+						// Scanner scanner = new Scanner(System.in);
 							gameTimer.start();
+							Thread.sleep(1000);
 						System.out.print("입력 > "); 	String word = scanner.next();
-							//gameTimer.setStop(true);
+							gameTimer.interrupt();
 						
-						System.out.println("121232");
+						//System.out.println("121232");
 						
 						boolean 결과 = Controller.gameStart(id, word);
-						System.out.println("121232");
-//						if(결과) {				
-//						}else {
-//							System.err.println("게임 종료");
-//							Controller.initialization(id);
-//							break;
-//						}
-						gameTimer.stop();
-						System.out.println("121232");
+						//System.out.println("121232");
+						if(결과) {				
+						}else {
+							System.err.println("게임 종료");
+							Controller.initialization(id);
+							break;
+						}
+						
+						//System.out.println("121232");
 					}
 
 				}
