@@ -54,6 +54,33 @@ public class App {
 						System.err.println("\n아이디 오류\n");
 					}
 				} else if (ch == 3) {
+					System.out.println("1. ID찾기 2. PW찾기"); int s = scanner.nextInt();
+					if(s==1) { // id찾기
+						System.out.println("===============================");
+						System.out.println("           ID찾기 페이지");
+						System.out.println("===============================");
+						System.out.println("이름 입력 : "); String name = scanner.next();
+						System.out.println("전화번호 입력 : "); String contact = scanner.next();
+						String id=Controller.idsearch(name, contact);
+						if(id==null) { // 리턴값이 null이면
+							System.out.println("일치하는 회원 정보가 없습니다.");
+						}else { // null말고 제대로 반환하면
+							System.out.println("회원님의 아이디는 "+id+"입니다.");
+						}
+						
+					}else if(s==2) { // pw찾기
+						System.out.println("===============================");
+						System.out.println("         비밀번호 찾기 페이지");
+						System.out.println("===============================");
+						System.out.println("아이디 입력 : "); String id = scanner.next();
+						System.out.println("전화번호 입력 : "); String contact = scanner.next();
+						String pw=Controller.pwsearch(id, contact);
+						if(pw==null) { // 리턴값이 null이면
+							System.out.print("일치하는 회원 정보가 없습니다.");
+						}else { // null말고 제대로 반환하면
+							System.out.print("회원님의 비밀번호는 "+pw+"입니다.");
+						}
+					}
 					
 				} else {
 					System.err.println("\n잘못된 접근\n");

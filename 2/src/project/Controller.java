@@ -71,6 +71,26 @@ public class Controller {
 		return 0;
 	}
 	
+	//id찾기 정준영
+	public static String idsearch(String name, String contact) { // 이름, 연락처 받기
+		for(Member temp : memberlist) {
+			if(temp.getName().equals(name) && temp.getContact().equals(contact)) {
+				return temp.getId(); // 이름, 연락처 일치하면
+			}
+		} return null; //일치하는 값이 없이 for문이 끝나면
+	} // id찾기 e
+	
+	//pw찾기 정준영
+	public static String pwsearch(String id, String contact) {
+		for(Member temp : memberlist) {
+			if(temp.getId().equals(id) && temp.getContact().equals(contact)) {
+				return temp.getPw(); // 이름, 연락처 일치하면
+			}
+		} return null; //일치하는 값이 없이 for문이 끝나면
+	} // id찾기 e
+	
+	
+	
 	//김선제 - gameStart 메소드 작성//
 	public static boolean gameStart(String id, String word) { 	// id, 및 입력한 word 받아오기
 		if(wordList[0] == null) {								// wordList의 [0] 값이 null 이면 						
@@ -133,7 +153,7 @@ public class Controller {
 			}
 		}
 	}
-	public void fileSave() { // 정준영 저장 s
+	public static void fileSave() { // 정준영 저장 s
         FileOutputStream fileOutputStream;
         try {
            fileOutputStream = new FileOutputStream("c:/temp/java/test/test.txt",true);
@@ -146,7 +166,7 @@ public class Controller {
         
      } // 저장 e
      
-     public void load() { // 정준영 불러오기 s
+     public static void load() { // 정준영 불러오기 s
         try {
            FileInputStream fileInputStream = new FileInputStream("c:/temp/java/test/test.txt");
            byte[] bytes = new byte[1024]; // 바이트 배열 선언
@@ -163,7 +183,5 @@ public class Controller {
         } catch (Exception e) {
            e.printStackTrace();
         }
-        
-        
      } // 불러오기 e
 }
