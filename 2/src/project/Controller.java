@@ -101,7 +101,7 @@ public class Controller {
 		return true;
 	}
 	//김선제- 점수 저장
-	public static void save(String id, int index) {
+	public static void countSave(String id, int index) {
 		for(Member temp : memberlist) {
 			if(temp != null && temp.getId().equals(id)) {
 				if(index > temp.getCount())
@@ -120,7 +120,7 @@ public class Controller {
 			}
 		}
 		System.out.println("내 점수: " + (index -1));
-		Controller.save(id, index -1);
+		Controller.countSave(id, index -1);
 	}
 	
 	//김선제- 점수 보기
@@ -133,7 +133,7 @@ public class Controller {
 			}
 		}
 	}
-	public void save() { // 정준영 저장 s
+	public void fileSave() { // 정준영 저장 s
         FileOutputStream fileOutputStream;
         try {
            fileOutputStream = new FileOutputStream("c:/temp/java/test/test.txt",true);
