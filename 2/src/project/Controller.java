@@ -72,28 +72,28 @@ public class Controller {
 	}
 	
 	//김선제 - gameStart 메소드 작성//
-	public static boolean gameStart(String id, String word) { // id, 및 입력한 word 받아오기
-		
-		if(wordList[0] == null) {
-			wordList[0] = word;
+	public static boolean gameStart(String id, String word) { 	// id, 및 입력한 word 받아오기
+		if(wordList[0] == null) {								// wordList의 [0] 값이 null 이면 						
+			wordList[0] = word;									//[0] 값에 word 넣기
 			System.out.println("입력받은 단어: " + word);
 			return true;
-		}else {
+		}else {													//wordList의 [0] 값이 null 이 아니면
 			int index = -1;
 			for(String temp : wordList) {
 				if(temp != null) {
-					index ++;
+					index ++;									//wordList 에 저장되어있는 수 - 1만큼 index값 저장
 				}
 				if(temp != null && temp.equals(word)) {
-					return false;
+					return false;								//wordList 에 저장되어있는 값중 중복이 있을시에 게임 종료
 				}
 			}
-	        char lastChar = wordList[index].charAt(wordList[index].length() - 1);
-	        char firstChar = word.charAt(0);
-	        if(lastChar == firstChar ) {
+	        char lastChar = 
+	        		wordList[index].charAt(wordList[index].length() - 1);	//wordList 의 마지막 글자의 뒷글자 lastChar 저장
+	        char firstChar = word.charAt(0);								//입력받은 word의 첫글자 firstChar 저장
+	        if(lastChar == firstChar ) {									//lastChar 이 firstChar 이면 저장
 	        	System.out.println("입력받은 단어: " + word);
 	        	wordList[index + 1] = word;
-	        }else {
+	        }else {															////lastChar 이 firstChar 이 아니면 게임종료
 	        	return false;
 	        }
 			
