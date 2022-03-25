@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class App {
 	
+	public static boolean inputCheck = false;
+	
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		try {

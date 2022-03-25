@@ -1,4 +1,4 @@
-package JHS;
+package project;
 
 public class GameTimer extends Thread {
 
