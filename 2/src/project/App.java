@@ -2,12 +2,13 @@ package project;
 
 import java.util.Scanner;
 
+
 public class App {
 	
 	public static boolean inputCheck = false;
 	
+	static Scanner scanner = new Scanner(System.in);
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
 		try {
 			
 			while(true) {
@@ -50,6 +51,7 @@ public class App {
 					if (result == 1) {
 						System.out.println("\n로그인 성공\n");
 						System.out.println("\n1. 게임시작 2. 로그아웃");
+						game(id);
 					} else if (result == 2) {
 						System.err.println("\n비밀번호 오류\n");
 					} else if (result == 3) {
@@ -97,6 +99,38 @@ public class App {
 		
 		
 		
+	}
+	
+	private static void game(String id) {
+		try {
+			while(true) {
+				System.out.println("---------끝말잇기 게임---------");
+				System.out.println("1. 시작 2. 내 점수보기 3.로그아웃");
+				System.out.println("----------------------------");
+				System.out.print(">>>>>: "); int ch = scanner.nextInt();
+				
+				if(ch == 1) {
+						System.out.println("게임 시작");
+					while(true) {
+							System.out.println("---------단어 입력---------");
+							System.out.print(">>>>>: "); String word = scanner.next();
+							boolean 결과 = Controller.gameStart(id, word);
+							if(결과) {				
+							}else {
+								System.err.println("게임 종료");
+								Controller.initialization(id);
+								break;
+							}
+						}
+					}
+				else if(ch == 2) {
+					System.out.println("---------점수 보기---------");
+					Controller.seeScore(id);
+				}
+				else if(ch == 3) {break;}
+				else System.out.println("올바른 숫자 입력");
+			}
+		}catch(Exception e) {}
 	}
 
 }
