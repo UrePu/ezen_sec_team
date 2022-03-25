@@ -9,6 +9,8 @@ public class App {
 	
 	static Scanner scanner = new Scanner(System.in);
 	public static void main(String[] args) {
+		
+		
 		try {
 			
 			while(true) {
@@ -102,6 +104,7 @@ public class App {
 	}
 	
 	private static void game(String id) {
+		
 		try {
 			while(true) {
 				System.out.println("---------끝말잇기 게임---------");
@@ -109,21 +112,35 @@ public class App {
 				System.out.println("----------------------------");
 				System.out.print(">>>>>: "); int ch = scanner.nextInt();
 				
+				//boolean 결과 = false;
 				if(ch == 1) {
-						System.out.println("게임 시작");
-						String firstword = Controller.randomfirstword();
-						System.out.print("첫번째 글자 : " + firstword + "\n");
+					System.out.println("게임 시작");
+					String firstword = Controller.randomfirstword();
+					System.out.print("첫번째 글자 : " + firstword + "\n");
+					GameTimer gameTimer = new GameTimer();
 					while(true) {
-							System.out.print("입력 > "); 	String word = scanner.next();
-							boolean 결과 = Controller.gameStart(id, word);
-							if(결과) {				
-							}else {
-								System.err.println("게임 종료");
-								Controller.initialization(id);
-								break;
-							}
-						}
+						//scanner = new Scanner(System.in);2
+						//gameTimer.setStop(false);
+						Scanner scanner = new Scanner(System.in);
+							gameTimer.start();
+						System.out.print("입력 > "); 	String word = scanner.next();
+							//gameTimer.setStop(true);
+						
+						System.out.println("121232");
+						
+						boolean 결과 = Controller.gameStart(id, word);
+						System.out.println("121232");
+//						if(결과) {				
+//						}else {
+//							System.err.println("게임 종료");
+//							Controller.initialization(id);
+//							break;
+//						}
+						gameTimer.stop();
+						System.out.println("121232");
 					}
+
+				}
 				else if(ch == 2) {
 					System.out.println("---------점수 보기---------");
 					Controller.seeScore(id);
