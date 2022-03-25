@@ -3,6 +3,10 @@ package project;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -11,6 +15,11 @@ public class Controller {
 	static ArrayList<Member> memberlist = new ArrayList<Member>();
 	static String[] wordList = new String[100];
  	Scanner scanner = new Scanner(System.in);
+ 	static List<String> firstwordlist = Arrays.asList("김", "이", "박", "최", "정", "강", "조", "윤", "장", "임", "한", "오", "서", "신", "권", "황", "안","송", "류", "전", "홍", "고", "문", "양", "손", "배", "조", "백", "허", "유", "남", "심", "노", "정", "하", "곽", "성", "차", "주", "우", "구", "신", "임", "나", "전", "민", "유", "진", "지", "엄", "채", "원", "천", "방", "공", "강", "현", "함", "변", "염", "양","변", "여", "추", "노", "도", "소", "신", "석", "선", "설", "마", "길", "주", "연", "방", "위", "표", "명", "기", "반", "왕", "금","옥", "육", "인", "맹", "제", "모", "장", "남", "탁", "국", "여", "진", "어", "은", "편", "구", "용");
+ 	
+
+
+
  	
 	// id_valid test
 	public static int id_valid (String id) {
@@ -90,7 +99,10 @@ public class Controller {
 		} return null; //일치하는 값이 없이 for문이 끝나면
 	} // id찾기 e
 	
-	
+	public static String randomfirstword() {
+		Collections.shuffle(firstwordlist);
+		return firstwordlist.get(0);
+	}
 	
 	//김선제 - gameStart 메소드 작성//
 	public static boolean gameStart(String id, String word) { 	// id, 및 입력한 word 받아오기
@@ -140,8 +152,8 @@ public class Controller {
 				index++;
 			}
 		}
-		System.out.println("내 점수: " + (index -1));
-		Controller.countSave(id, index -1);
+		System.out.println("내 점수: " + (index));
+		Controller.countSave(id, index);
 	}
 	
 	//김선제- 점수 보기

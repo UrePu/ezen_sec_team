@@ -111,9 +111,10 @@ public class App {
 				
 				if(ch == 1) {
 						System.out.println("게임 시작");
+						String firstword = Controller.randomfirstword();
+						System.out.print("첫번째 글자 : " + firstword + "\n");
 					while(true) {
-							System.out.println("---------단어 입력---------");
-							System.out.print(">>>>>: "); String word = scanner.next();
+							System.out.print("입력 > "); 	String word = scanner.next();
 							boolean 결과 = Controller.gameStart(id, word);
 							if(결과) {				
 							}else {
