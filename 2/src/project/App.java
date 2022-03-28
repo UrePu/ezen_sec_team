@@ -1,5 +1,8 @@
 package project;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 
 
@@ -112,34 +115,42 @@ public class App {
 				System.out.println("----------------------------");
 				System.out.print(">>>>>: "); int ch = scanner.nextInt();
 				
-				//boolean 결과 = false;
+				boolean 결과 = false;
 				if(ch == 1) {
 					System.out.println("게임 시작");
 					String firstword = Controller.randomfirstword();
 					System.out.print("첫번째 글자 : " + firstword + "\n");
-					
+					long timelimit = 20;
 					while(true) {
-						GameTimer gameTimer = new GameTimer();
-						//scanner = new Scanner(System.in);2
-						//gameTimer.setStop(false);
-						// Scanner scanner = new Scanner(System.in);
-							gameTimer.start();
-							Thread.sleep(1000);
+						
+						SimpleDateFormat dateFormat = new SimpleDateFormat("mm:ss",Locale.KOREA);
+						Date date = new Date();
+						String starttime = dateFormat.format(date);
+						System.out.println("시작시간 : " + starttime);
+						Date d1 = dateFormat.parse(starttime);
 						System.out.print("입력 > "); 	String word = scanner.next();
-							gameTimer.interrupt();
-						
-						//System.out.println("121232");
-						
-						boolean 결과 = Controller.gameStart(id, word);
-						//System.out.println("121232");
-						if(결과) {				
-						}else {
+						Date date1 = new Date();
+						String endtime = dateFormat.format(date1);
+						Date d2 = dateFormat.parse(endtime);
+			
+						long diff = d2.getTime() - d1.getTime();
+						long sec = diff / 1000;
+
+						if (sec < timelimit) {
+							결과 = Controller.gameStart(id, word);
+							if (timelimit > 5) {
+								timelimit -= 5;
+								
+							}
+							System.out.println("시간제한 : " + timelimit);
+						} else {
+							결과 = false;
+						}
+						if(!결과) {	
 							System.err.println("게임 종료");
 							Controller.initialization(id);
 							break;
-						}
-						
-						//System.out.println("121232");
+						} 
 					}
 
 				}

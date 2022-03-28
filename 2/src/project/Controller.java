@@ -164,7 +164,6 @@ public class Controller {
 		for(Member temp : memberlist) {
 			if(temp != null && temp.getId().equals(id)) {
 			System.out.println( temp.getCount());
-
 			}
 		}
 	}
