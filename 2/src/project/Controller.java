@@ -4,10 +4,12 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.NavigableSet;
 import java.util.Scanner;
+import java.util.TreeSet;
 import java.util.regex.Pattern;
 
 public class Controller {
@@ -197,4 +199,22 @@ public class Controller {
            e.printStackTrace();
         }
      } // 불러오기 e
+     
+     //랭킹 정준영
+     public static void ranking() {
+
+    	 HashMap<Integer, String> rank = new HashMap<>();
+    	 TreeSet<Integer> scores = new TreeSet<>();
+    	 for(Member temp : memberlist) {
+    		 scores.add(temp.getCount()); // 점수값 반복 저장
+    	 }
+    	 
+    	 NavigableSet<Integer> desc = scores.descendingSet(); // 내림차순 정렬해서 desc에 저장
+    	 for(Member temp : memberlist) { // 멤버리스트 전체에서
+    		 rank.put(temp.getCount(), temp.getId()); // 점수랑 아이디 저장(자동 정렬)
+    	 }
+    	 //출력파트
+    	 int i = 1;
+    	 for(Integer d : desc) { System.out.println(i+"위 : "+rank.get(d)+", "+d+"점"); i++;}
+     }
 }
