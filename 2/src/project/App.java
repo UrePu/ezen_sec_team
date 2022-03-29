@@ -12,7 +12,7 @@ public class App {
 	
 	static Scanner scanner = new Scanner(System.in);
 	public static void main (String[] args) {
-		
+		Controller.load();
 		
 		try {
 			
@@ -111,7 +111,7 @@ public class App {
 		try {
 			while(true) {
 				System.out.println("---------끝말잇기 게임---------");
-				System.out.println("1. 시작 2. 내 점수보기 3.로그아웃");
+				System.out.println("1.시작 2.내 점수보기 3.로그아웃 4.랭킹");
 				System.out.println("----------------------------");
 				System.out.print(">>>>>: "); int ch = scanner.nextInt();
 				
@@ -138,8 +138,8 @@ public class App {
 
 						if (sec < timelimit) {
 							결과 = Controller.gameStart(id, word);
-							if (timelimit > 5) {
-								timelimit -= 5;
+							if (timelimit > 2) { //시간제한이 2초보다 많을 때에
+								timelimit -= 2; // 2초씩 감소
 								
 							}
 							System.out.println("시간제한 : " + timelimit);
@@ -155,10 +155,11 @@ public class App {
 
 				}
 				else if(ch == 2) {
-					System.out.println("---------점수 보기---------");
-					Controller.seeScore(id);
+					System.out.println("---------내 점수 보기---------");
+					System.out.print("내 점수 : "); Controller.seeScore(id); System.out.println("점");
 				}
 				else if(ch == 3) {break;}
+				else if(ch == 4) {Controller.ranking();}
 				else System.out.println("올바른 숫자 입력");
 			}
 		}catch(Exception e) {}

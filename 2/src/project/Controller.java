@@ -65,7 +65,7 @@ public class Controller {
 	// sign_up method
 	public static void sign_up (String id, String pw, String name, String contact) {
 		Member member = new Member(id, pw, name, contact);
-		memberlist.add(member);
+		memberlist.add(member); fileSave();
 	}
 	
 	// login method
@@ -101,7 +101,7 @@ public class Controller {
 		} return null; //일치하는 값이 없이 for문이 끝나면
 	} // id찾기 e
 	
-	public static String randomfirstword() {
+	public static String randomfirstword() { // 첫 글자 랜덤으로 배정
 		Collections.shuffle(firstwordlist);
 		return firstwordlist.get(0);
 	}
@@ -140,7 +140,7 @@ public class Controller {
 		for(Member temp : memberlist) {
 			if(temp != null && temp.getId().equals(id)) {
 				if(index > temp.getCount())
-					temp.setCount(index);
+					temp.setCount(index); fileSave();
 			}
 		}
 		
@@ -213,7 +213,7 @@ public class Controller {
     		 rank.put(temp.getCount(), temp.getId()); // 점수랑 아이디 저장(자동 정렬)
     	 }
     	 //출력파트
-    	 int i = 1;
+    	 int i = 1; System.out.println("------------랭킹-------------");
     	 for(Integer d : desc) { System.out.println(i+"위 : "+rank.get(d)+", "+d+"점"); i++;}
      }
 }
