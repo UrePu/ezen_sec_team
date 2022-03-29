@@ -55,7 +55,6 @@ public class App {
 					int result = Controller.login(id, pw);
 					if (result == 1) {
 						System.out.println("\n로그인 성공\n");
-						System.out.println("\n1. 게임시작 2. 로그아웃");
 						game(id);
 					} else if (result == 2) {
 						System.err.println("\n비밀번호 오류\n");
