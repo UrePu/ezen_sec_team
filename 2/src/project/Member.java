@@ -2,41 +2,37 @@ package project;
 
 public class Member {
 	
-	// field
-	private String id, pw, name, contact;
+	//필드
+	private String id;
+	private String password;
 	private int count;
+	private String name;
+	private String phone;	
 	
-	// constructor
-	public Member() {
-		// TODO Auto-generated constructor stub
+	//생성자
+	public Member() {}
+	
+	public Member(String id, String password, String name, String phone) { // 회원가입
+		this.id = id;
+		this.password = password;
+		this.name = name;
+		this.phone = phone;
 	}
 	
-	public Member(String id, String pw, String name, String contact, int count) {
-		super();
-		this.id = id;
-		this.pw = pw;
-		this.name = name;
-		this.contact = contact;
-		this.count = count;
-	}
-
-	public Member(String id, String pw, String name, String contact) {
-		super();
-		this.id = id;
-		this.pw = pw;
-		this.name = name;
-		this.contact = contact;
-	}
-
-	public Member(String id, int count) {
-		super();
+	public Member(String id, int count) { // 랭킹
 		this.id = id;
 		this.count = count;
 	}
+	
+	public Member(String id, String password, String name, String phone, int count) { // 풀
+		this.id = id;
+		this.password = password;
+		this.count = count;
+		this.name = name;
+		this.phone = phone;
+	}
 
-	
-	// method
-	
+	//메소드[get/set]
 	public String getId() {
 		return id;
 	}
@@ -45,12 +41,20 @@ public class Member {
 		this.id = id;
 	}
 
-	public String getPw() {
-		return pw;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPw(String pw) {
-		this.pw = pw;
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
 	}
 
 	public String getName() {
@@ -61,27 +65,12 @@ public class Member {
 		this.name = name;
 	}
 
-	public String getContact() {
-		return contact;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setContact(String contact) {
-		this.contact = contact;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-
-	public int getCount() {
-		return count;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
-	}
-	
-
-	
-	
-	
-	
-	
 
 }
