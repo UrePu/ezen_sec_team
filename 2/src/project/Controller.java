@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 public class Controller {
 	//리스트
 	static ArrayList<Member> memberlist = new ArrayList<Member>();
-	static String[] wordList = new String[100];
+	static String[] wordList = new String[1000];
 	Scanner scanner = new Scanner(System.in);
  	static List<String> firstwordlist = Arrays.asList(
  			"김", "이", "박", "최", "정", "강", "조", "윤", "장", "임", 
@@ -31,7 +31,7 @@ public class Controller {
  			"설", "마", "길", "주", "연", "방", "위", "표", "명", "기", 
  			"반", "왕", "금","옥", "육", "인", "맹", "제", "모", "장", 
  			"남", "탁", "국", "여", "진", "어", "은", "편", "구", "용");
-	
+ 	
 	//메소드
 		// 회원가입
 	public static int id_valid (String id) {
@@ -56,7 +56,7 @@ public class Controller {
 		for(Member temp : memberlist) {
 			if (temp.getId().equals(id)) {
 				return false;
-			} 
+			}
 		}
 		return true;
 	}
@@ -133,8 +133,8 @@ public class Controller {
 				index++;
 			}
 		}
-		System.out.println("내 점수: " + (index));
-		Controller.gameSave(id, index);
+		System.out.println("내 점수: " + (index-1));
+		Controller.gameSave(id, index-1);
 	}
 	
 	//김선제- 점수 보기
@@ -239,6 +239,7 @@ public class Controller {
 					int level = App.scanner.nextInt();
 					System.out.println("게임 시작");
 					String firstword = Controller.randomfirstword();
+					wordList[0] = firstword;
 					System.out.print("첫번째 글자 : " + firstword + "\n");
 					
 					long timelimit = 20;
