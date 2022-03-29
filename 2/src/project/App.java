@@ -20,7 +20,7 @@ public class App {
 				System.out.println("===============================");
 				System.out.println("              끝말잇기");
 				System.out.println("===============================");
-				System.out.println("1. 회원가입 2. 로그인 3. ID/PW 찾기\n");
+				System.out.println("1. 회원가입 2. 로그인 3. ID찾기 4. 비밀번호 찾기 5. 랭킹\n");
 				System.out.print("선택 > "); 		int ch = scanner.nextInt();
 				
 				if (ch == 1) {
@@ -61,9 +61,8 @@ public class App {
 					} else if (result == 3) {
 						System.err.println("\n아이디 오류\n");
 					}
-				} else if (ch == 3) {
-					System.out.println("1. ID찾기 2. PW찾기"); int s = scanner.nextInt();
-					if(s==1) { // id찾기
+				}
+					else if(ch==3) { // id찾기
 						System.out.println("===============================");
 						System.out.println("           ID찾기 페이지");
 						System.out.println("===============================");
@@ -76,7 +75,7 @@ public class App {
 							System.out.println("회원님의 아이디는 "+id+"입니다.");
 						}
 						
-					}else if(s==2) { // pw찾기
+					}else if(ch==4) { // pw찾기
 						System.out.println("===============================");
 						System.out.println("         비밀번호 찾기 페이지");
 						System.out.println("===============================");
@@ -88,14 +87,15 @@ public class App {
 						}else { // null말고 제대로 반환하면
 							System.out.print("회원님의 비밀번호는 "+pw+"입니다.");
 						}
-					}
 					
-				} else {
+					} // pw찾기 e
+					else if(ch == 5) {Controller.ranking();} // 랭킹보기
+					else {
 					System.err.println("\n잘못된 접근\n");
 				}
 				
-				
-			}
+		}// while end
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -110,12 +110,14 @@ public class App {
 		try {
 			while(true) {
 				System.out.println("---------끝말잇기 게임---------");
-				System.out.println("1.시작 2.내 점수보기 3.로그아웃 4.랭킹");
+				System.out.println("1.시작 2.내 점수보기 3.로그아웃");
 				System.out.println("----------------------------");
 				System.out.print(">>>>>: "); int ch = scanner.nextInt();
 				
 				boolean 결과 = false;
 				if(ch == 1) {
+					System.out.println("난이도를 선택하세요");
+					System.out.println("1.쉬움 2.보통 3.어려움"); int level = scanner.nextInt();
 					System.out.println("게임 시작");
 					String firstword = Controller.randomfirstword();
 					System.out.print("첫번째 글자 : " + firstword + "\n");
@@ -135,14 +137,16 @@ public class App {
 						long diff = d2.getTime() - d1.getTime();
 						long sec = diff / 1000;
 
-						if (sec < timelimit) {
+						if (sec < timelimit) { // 시간제한에 걸리지 않았을 시(통과시)
 							결과 = Controller.gameStart(id, word);
-							if (timelimit > 2) { //시간제한이 2초보다 많을 때에
-								timelimit -= 2; // 2초씩 감소
-								
+							if (timelimit > 4) { //시간제한이 4초보다 많을 때에
+								if(level==1) {timelimit-=1;} // 쉬움 난이도에서 1초씩 감소
+								if(level==2) {timelimit-=2;} // 보통 난이도에서 2초씩 감소
+								if(level==3) {timelimit-=4;} // 어려움 난이도에서 4초씩 감소
 							}
 							System.out.println("시간제한 : " + timelimit);
 						} else {
+							System.err.println("시간 초과");
 							결과 = false;
 						}
 						if(!결과) {	
@@ -155,10 +159,10 @@ public class App {
 				}
 				else if(ch == 2) {
 					System.out.println("---------내 점수 보기---------");
-					System.out.print("내 점수 : "); Controller.seeScore(id); System.out.println("점");
+					System.out.print("내 점수 : "); Controller.seeScore(id);
 				}
 				else if(ch == 3) {break;}
-				else if(ch == 4) {Controller.ranking();}
+				
 				else System.out.println("올바른 숫자 입력");
 			}
 		}catch(Exception e) {}
